@@ -1,0 +1,15 @@
+node_modules
+.pnp
+.pnp.js
+
+.DS_Store
+.env*
+.next
+
+*.generated.*
+web/database/generated
+!web/graphql/schema.generated.graphql
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
