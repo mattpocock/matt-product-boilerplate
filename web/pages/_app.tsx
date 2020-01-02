@@ -1,21 +1,19 @@
 // @flow
 import React from "react";
 import App, { Container } from "next/app";
-import { ApolloProvider } from "react-apollo";
-import NProgress from "next-nprogress/component";
-import withNProgress from "next-nprogress";
+import { ApolloProvider } from "@apollo/react-hooks";
 import { BaseStyles } from "@nice-boys/components";
-import withApollo, { ApolloAppProps } from "../components/WithApollo";
-import theme from "../theme";
+import { getClient } from "../components/WithApollo/client";
 
-class MyApp extends App<ApolloAppProps> {
+const client = getClient();
+
+class MyApp extends App {
   render() {
-    const { Component, pageProps, apolloClient } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <Container>
-        <NProgress color={theme.brand.default} />
-        <ApolloProvider client={apolloClient}>
+        <ApolloProvider client={client}>
           <BaseStyles />
           <Component {...pageProps} />
         </ApolloProvider>
@@ -25,4 +23,4 @@ class MyApp extends App<ApolloAppProps> {
 }
 
 // @ts-ignore
-export default withNProgress(1000, { showSpinner: false })(withApollo(MyApp));
+export default MyApp;

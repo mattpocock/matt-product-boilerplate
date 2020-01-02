@@ -2,15 +2,69 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  createPost(name: String!, slug: String!, wysiwygText: String!): Post!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateViewer(email: String, name: String): User!
+}
+
+type Post {
+  id: ID!
+  name: String!
+  published: Boolean!
+  slug: String!
+  wysiwygText: String!
+}
+
+input PostUpdateInput {
+  name: String
+  owner: UserUpdateOneRequiredWithoutPostsInput
+  published: Boolean
+  slug: String
+  wysiwygText: String
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
 type Query {
-  user(where: UserWhereUniqueInput!): User
   viewer: User
 }
 
 type User {
   avatarUrl: String
+  email: String
   id: ID!
   name: String!
+  posts: [Post!]
+}
+
+input UserCreateWithoutPostsInput {
+  avatarUrl: String
+  email: String
+  googleId: ID!
+  id: ID
+  name: String!
+}
+
+input UserUpdateOneRequiredWithoutPostsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutPostsInput
+  update: UserUpdateWithoutPostsDataInput
+  upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithoutPostsDataInput {
+  avatarUrl: String
+  email: String
+  googleId: ID
+  name: String
+}
+
+input UserUpsertWithoutPostsInput {
+  create: UserCreateWithoutPostsInput!
+  update: UserUpdateWithoutPostsDataInput!
 }
 
 input UserWhereUniqueInput {

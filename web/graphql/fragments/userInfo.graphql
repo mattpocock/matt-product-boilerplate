@@ -1,5 +1,12 @@
 fragment userInfo on User {
   id
-  avatarUrl
   name
+  avatarUrl
+  posts {
+    id
+    name
+    published
+    wysiwygText
+    slug
+  }
 }

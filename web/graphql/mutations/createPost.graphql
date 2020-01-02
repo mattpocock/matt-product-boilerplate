@@ -1,0 +1,9 @@
+mutation CreatePost($name: String!, $wysiwygText: String!, $slug: String!) {
+  createPost(name: $name, wysiwygText: $wysiwygText, slug: $slug) {
+    id
+    name
+    published
+    wysiwygText
+    slug
+  }
+}

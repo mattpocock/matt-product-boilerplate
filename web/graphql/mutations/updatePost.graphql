@@ -1,0 +1,23 @@
+mutation UpdatePost(
+  $name: String!
+  $wysiwygText: String!
+  $id: ID!
+  $published: Boolean
+  $slug: String!
+) {
+  updatePost(
+    data: {
+      name: $name
+      wysiwygText: $wysiwygText
+      published: $published
+      slug: $slug
+    }
+    where: { id: $id }
+  ) {
+    id
+    name
+    published
+    wysiwygText
+    slug
+  }
+}

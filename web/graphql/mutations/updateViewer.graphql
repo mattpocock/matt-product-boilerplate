@@ -1,0 +1,6 @@
+mutation UpdateViewer($name: String, $email: String) {
+  updateViewer(name: $name, email: $email) {
+    name
+    email
+  }
+}

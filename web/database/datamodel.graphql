@@ -1,0 +1,17 @@
+type User {
+  id: ID! @id
+  name: String!
+  googleId: ID! @unique
+  email: String
+  avatarUrl: String
+  posts: [Post]
+}
+
+type Post {
+  id: ID! @id
+  name: String!
+  published: Boolean! @default(value: false)
+  wysiwygText: String!
+  slug: String!
+  owner: User! @relation(link: INLINE)
+}
