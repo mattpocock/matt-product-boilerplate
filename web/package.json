@@ -21,7 +21,7 @@
     "@types/styled-components": "4.1.18",
     "@zeit/next-typescript": "^1.1.1",
     "apollo-boost": "^0.4.4",
-    "apollo-server-express": "^2.8.2",
+    "apollo-server-express": "^2.14.2",
     "apollo-server-micro": "^2.6.9",
     "babel-plugin-styled-components": "^1.10.6",
     "body-parser": "^1.19.0",
